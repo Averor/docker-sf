@@ -9,6 +9,8 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+RUN a2enmod rewrite
+
 RUN    apt-get update \
     && apt-get install -y --fix-missing
 
@@ -71,5 +73,10 @@ RUN usermod -G www-data www-data
 RUN echo 'PassEnv APP_ENV' > /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_DEBUG' >> /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_SECRET' >> /etc/apache2/conf-enabled/expose-env.conf
+
+WORKDIR /var/www/html
+
+EXPOSE 80
+EXPOSE 443
 
 CMD ["apache2-foreground"]

@@ -4,6 +4,8 @@ MAINTAINER averor.dev@gmail.com
 
 RUN echo "Europe/Warsaw" > /etc/timezone && cp /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+
 RUN    apt-get update \
     && apt-get install -y --fix-missing
 

@@ -74,7 +74,7 @@ RUN echo 'PassEnv APP_ENV' > /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_DEBUG' >> /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_SECRET' >> /etc/apache2/conf-enabled/expose-env.conf
 
-RUN chmod -R 770 /var/www/html/var
+RUN mkdir /var/www/html/var && chmod -R 770 /var/www/html/var
 
 WORKDIR /var/www/html
 

@@ -2,8 +2,6 @@ FROM php:7.1.10-apache-jessie
 
 MAINTAINER averor.dev@gmail.com
 
-ARG DOCKER_VHOST_NAME
-
 RUN echo "Europe/Warsaw" > /etc/timezone && cp /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 
 RUN    apt-get update \
@@ -29,16 +27,7 @@ ENV LANG pl_PL.UTF-8
 ENV LANGUAGE pl_PL:en
 ENV LC_ALL pl_PL.UTF-8
 
-COPY ./vhost.conf /tmp/
 COPY ./xdebug.ini /tmp/
-
-RUN sed "s/_VHOST_NAME_/$DOCKER_VHOST_NAME/g" /tmp/vhost.conf > /etc/apache2/sites-available/$DOCKER_VHOST_NAME.conf
-
-RUN    cd /etc/apache2/sites-available/ \
-    && a2dissite * \
-    && a2ensite $DOCKER_VHOST_NAME \
-    && a2enmod rewrite \
-    && mkdir -p /var/www/html/$DOCKER_VHOST_NAME
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
@@ -77,3 +66,5 @@ RUN usermod -G www-data www-data
 RUN echo 'PassEnv APP_ENV' > /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_DEBUG' >> /etc/apache2/conf-enabled/expose-env.conf
 RUN echo 'PassEnv APP_SECRET' >> /etc/apache2/conf-enabled/expose-env.conf
+
+CMD ["apache2-foreground"]

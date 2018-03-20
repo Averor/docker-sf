@@ -23,7 +23,6 @@ RUN apt-get install -y \
     zlib1g-dev \
     libcurl4-gnutls-dev \
     libssl-dev \
-    mysql-client \
     moreutils
 
 RUN    sed -i -e 's/# pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen \
@@ -56,16 +55,10 @@ RUN    docker-php-ext-install bcmath \
     && docker-php-ext-install json \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install pcntl \
-    && docker-php-ext-install pdo \
-    && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install session \
     && docker-php-ext-install soap \
     && docker-php-ext-install xml \
     && docker-php-ext-install zip
-
-# MongoDB
-RUN pecl install mongodb
-RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/ext-mongodb.ini
 
 RUN usermod -u 1000 www-data
 RUN usermod -G www-data www-data

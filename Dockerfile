@@ -19,6 +19,7 @@ RUN apt-get install -y \
     git \
     libicu52 libicu-dev \
     libxml2 libxml2-dev \
+    sqlite3 \
     zip unzip \
     zlib1g-dev \
     libcurl4-gnutls-dev \

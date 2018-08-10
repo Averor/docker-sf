@@ -56,7 +56,6 @@ RUN    docker-php-ext-install bcmath \
     && docker-php-ext-install intl \
     && docker-php-ext-install json \
     && docker-php-ext-install mbstring \
-    && docker-php-ext-install openssl \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install pdo \
     && docker-php-ext-install pdo_mysql \

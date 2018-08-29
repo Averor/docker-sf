@@ -16,6 +16,7 @@ RUN    apt-get update \
 
 RUN apt-get install -y \
     locales \
+    nano \
     git \
     libicu52 libicu-dev \
     libxml2 libxml2-dev \

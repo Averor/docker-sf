@@ -19,6 +19,7 @@ RUN apt-get install -y \
     nano \
     git \
     libicu52 libicu-dev \
+    librabbitmq-dev \
     libxml2 libxml2-dev \
     sqlite3 \
     zip unzip \
@@ -69,6 +70,10 @@ RUN    docker-php-ext-install bcmath \
 # MongoDB
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/ext-mongodb.ini
+
+# AMQP
+RUN pecl install amqp
+RUN docker-php-ext-enable amqp
 
 RUN usermod -u 1000 www-data
 RUN usermod -G www-data www-data

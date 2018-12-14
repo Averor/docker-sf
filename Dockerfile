@@ -54,6 +54,7 @@ RUN cat /tmp/xdebug.ini >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN    docker-php-ext-install bcmath \
     && docker-php-ext-install curl \
+    && docker-php-ext-install gd \
     && docker-php-ext-install iconv \
     && docker-php-ext-install intl \
     && docker-php-ext-install json \

@@ -26,6 +26,7 @@ RUN apt-get install -y \
     zlib1g-dev \
     libcurl4-gnutls-dev \
     libssl-dev \
+    libpng-dev \
     mysql-client \
     moreutils
 

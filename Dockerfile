@@ -18,7 +18,7 @@ RUN apt-get install -y \
     locales \
     nano \
     git \
-    libicu52 libicu-dev \
+    libicu57 libicu-dev \
     librabbitmq-dev \
     libxml2 libxml2-dev \
     sqlite3 \

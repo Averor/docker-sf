@@ -1,4 +1,4 @@
-FROM php:7.1.10-apache-jessie
+FROM php:7.1-apache-stretch
 
 MAINTAINER averor.dev@gmail.com
 

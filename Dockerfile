@@ -27,6 +27,8 @@ RUN apt-get install -y \
     libcurl4-gnutls-dev \
     libssl-dev \
     libpng-dev \
+    libxrender1 \
+    libfontconfig \
     mysql-client \
     moreutils
 

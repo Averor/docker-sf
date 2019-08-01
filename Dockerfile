@@ -30,7 +30,8 @@ RUN apt-get install -y \
     libxrender1 \
     libfontconfig \
     mysql-client \
-    moreutils
+    moreutils \
+    libpq-dev
 
 RUN    sed -i -e 's/# pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales \
@@ -69,7 +70,9 @@ RUN    docker-php-ext-install bcmath \
     && docker-php-ext-install session \
     && docker-php-ext-install soap \
     && docker-php-ext-install xml \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && docker-php-ext-install pgsql \
+    && docker-php-ext-install pdo_pgsql pgsql
 
 # MongoDB
 RUN pecl install mongodb

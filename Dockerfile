@@ -82,6 +82,12 @@ RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/ext-mongodb.ini
 RUN pecl install amqp
 RUN docker-php-ext-enable amqp
 
+# extended http support
+RUN docker-php-ext-enable raphf
+RUN docker-php-ext-enable propro
+RUN apt-get install -y libgnutls28-dev
+RUN pecl install pecl_http
+
 RUN usermod -u 1000 www-data
 RUN usermod -G www-data www-data
 

@@ -31,7 +31,9 @@ RUN apt-get install -y \
     libfontconfig \
     mysql-client \
     moreutils \
-    libpq-dev
+    libpq-dev \
+    libxrender1 \
+    libfontconfig
 
 RUN    sed -i -e 's/# pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales \
